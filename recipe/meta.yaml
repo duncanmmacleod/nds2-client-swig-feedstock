@@ -25,17 +25,23 @@ requirements:
   host:
     - nds2-client >=0.15.3
     - swig >=3.0.7
-    - python
-    - numpy
-
-test:
-  imports:
-    - nds2
 
 outputs:
-  - name: python-nds2-client
+  - name: nds2-client-swig
+    script: install-interface.sh
     requirements:
+      build:
+        - cmake
+        - make
+  - name: python-nds2-client
+    script: install-python.sh
+    requirements:
+      build:
+        - cmake >=3.6
+        - make
       host:
+        - swig >=3.0.7
+        - {{ pin_subpackage('nds2-client-swig', exact=True) }}
         - nds2-client >=0.15.3
         - python
         - numpy
@@ -43,10 +49,6 @@ outputs:
         - nds2-client >=0.15.3
         - python
         - {{ pin_compatible('numpy') }}
-    files:
-      - lib/python*/site-packages/nds2.py*
-      - lib/python*/site-packages/__pycache__/nds2.*.pyc  # [not py27]
-      - lib/python*/site-packages/_nds2.so
     test:
       imports:
         - nds2
