@@ -7,10 +7,9 @@ Package license: GPLv3
 
 Feedstock license: BSD 3-Clause
 
-Summary: Python extensions for NDS2
+Summary: SWIG bindings for NDS2
 
-This provides python wrappers for the nds2 client.
-
+This provides SWIG interface files for the NDS2 client.
 
 Current build status
 ====================
@@ -24,6 +23,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-nds2--client--swig-green.svg)](https://anaconda.org/conda-forge/nds2-client-swig) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nds2-client-swig.svg)](https://anaconda.org/conda-forge/nds2-client-swig) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nds2-client-swig.svg)](https://anaconda.org/conda-forge/nds2-client-swig) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nds2-client-swig.svg)](https://anaconda.org/conda-forge/nds2-client-swig) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-python--nds2--client-green.svg)](https://anaconda.org/conda-forge/python-nds2-client) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/python-nds2-client.svg)](https://anaconda.org/conda-forge/python-nds2-client) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/python-nds2-client.svg)](https://anaconda.org/conda-forge/python-nds2-client) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/python-nds2-client.svg)](https://anaconda.org/conda-forge/python-nds2-client) |
 
 Installing nds2-client-swig
@@ -35,16 +35,16 @@ Installing `nds2-client-swig` from the `conda-forge` channel can be achieved by 
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `python-nds2-client` can be installed with:
+Once the `conda-forge` channel has been enabled, `nds2-client-swig, python-nds2-client` can be installed with:
 
 ```
-conda install python-nds2-client
+conda install nds2-client-swig python-nds2-client
 ```
 
-It is possible to list all of the versions of `python-nds2-client` available on your platform with:
+It is possible to list all of the versions of `nds2-client-swig` available on your platform with:
 
 ```
-conda search python-nds2-client --channel conda-forge
+conda search nds2-client-swig --channel conda-forge
 ```
 
 
