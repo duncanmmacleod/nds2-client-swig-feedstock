@@ -36,6 +36,10 @@ outputs:
         - make
       host:
         - nds2-client >={{ nds2_client_version }}
+    test:
+      commands:
+        - test -f ${PREFIX}/include/nds2-client/nds.i
+        - test -f ${PREFIX}/include/nds2-client/nds_swig.hh
     about:
       home: https://wiki.ligo.org/DASWG/NDSClient
       license: GPLv3
