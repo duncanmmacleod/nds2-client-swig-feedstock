@@ -30,7 +30,7 @@ cmake --build python -- -j ${CPU_COUNT}
 cmake --build python --target install
 
 # test
-ctest -V
+#ctest -V
 
 # remove unnecessary testing files
 rm -rvf ${PREFIX}/libexec/nds2-client
