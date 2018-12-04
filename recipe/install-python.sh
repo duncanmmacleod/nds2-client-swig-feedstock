@@ -1,28 +1,27 @@
 #!/bin/bash
 #
 # Build and install the Python bindings for the NDS2Client
+#
 
 set -ex
 pushd ${SRC_DIR}/build
 
-if [ "${PY3K}" -eq 1 ]; then
-  _PYTHON_BUILD_OPTS="-DENABLE_SWIG_PYTHON2=no -DENABLE_SWIG_PYTHON3=yes"
-else
-  _PYTHON_BUILD_OPTS="-DENABLE_SWIG_PYTHON3=no -DENABLE_SWIG_PYTHON2=yes"
-fi
+# switch between python major versions
+ENABLEPY2="no"
+ENABLEPY3="no"
+[ "${PY3K}" -eq 1 ] && ENABLEPY3="yes" || ENABLEPY2="yes"
 
 # configure
 cmake .. \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DWITH_SASL=${PREFIX} \
-  -DWITH_GSSAPI=no \
   -DENABLE_SWIG_JAVA=no \
   -DENABLE_SWIG_MATLAB=no \
   -DENABLE_SWIG_OCTAVE=no \
+  -DENABLE_SWIG_PYTHON2=${ENABLEPY2} \
+  -DENABLE_SWIG_PYTHON3=${ENABLEPY3} \
   -DPYTHON=${PYTHON} \
-  -DPYTHON_EXECUTABLE=${PYTHON} \
-  ${_PYTHON_BUILD_OPTS}
+  -DPYTHON_EXECUTABLE=${PYTHON}
 
 # build
 cmake --build python -- -j ${CPU_COUNT}

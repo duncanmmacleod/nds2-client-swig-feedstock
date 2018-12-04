@@ -14,7 +14,7 @@ source:
 
 build:
   number: 1000
-  skip: true  # [win or py37]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -51,6 +51,7 @@ outputs:
     script: install-python.sh
     build:
       activate_in_script: True
+      skip: true  # [osx and py==37]
     requirements:
       build:
         - {{ compiler('c') }}
