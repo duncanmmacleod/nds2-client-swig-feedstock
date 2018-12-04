@@ -21,7 +21,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake >=3.6
-    - make
+    - make  # [not win]
+    - pkg-config  # [not win]
+    - swig >=3.0.7
   host:
     - nds2-client >={{ nds2_client_version }}
 
@@ -31,7 +33,7 @@ outputs:
     requirements:
       build:
         - cmake >=3.6
-        - make
+        - make  # [not win]
       host:
         - nds2-client >={{ nds2_client_version }}
     test:
@@ -54,8 +56,8 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - cmake >=3.6
-        - pkg-config
-        - make
+        - pkg-config  # [not win]
+        - make  # [not win]
         - swig >=3.0.7
       host:
         - nds2-client >={{ nds2_client_version }}
