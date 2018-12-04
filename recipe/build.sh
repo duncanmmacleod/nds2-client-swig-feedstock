@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Build the common SWIG Interface libraries for the NDS2Client
+#
 
 mkdir -p build
 pushd build
