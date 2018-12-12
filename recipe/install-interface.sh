@@ -6,4 +6,9 @@
 
 set -e
 pushd ${SRC_DIR}/build
+
+# test
+ctest --extra-verbose --output-on-failure
+
+# install
 cmake --build . --target install

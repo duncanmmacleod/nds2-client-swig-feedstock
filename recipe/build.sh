@@ -6,9 +6,10 @@
 mkdir -p build
 pushd build
 
-cmake .. \
+cmake ${SRC_DIR} \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=yes \
   -DENABLE_SWIG_JAVA=no \
   -DENABLE_SWIG_MATLAB=no \
   -DENABLE_SWIG_OCTAVE=no \

@@ -12,16 +12,15 @@ ENABLEPY3="no"
 [ "${PY3K}" -eq 1 ] && ENABLEPY3="yes" || ENABLEPY2="yes"
 
 # configure
-cmake .. \
+cmake ${SRC_DIR} \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=yes \
   -DENABLE_SWIG_JAVA=no \
   -DENABLE_SWIG_MATLAB=no \
   -DENABLE_SWIG_OCTAVE=no \
   -DENABLE_SWIG_PYTHON2=${ENABLEPY2} \
-  -DENABLE_SWIG_PYTHON3=${ENABLEPY3} \
-  -DPYTHON=${PYTHON} \
-  -DPYTHON_EXECUTABLE=${PYTHON}
+  -DENABLE_SWIG_PYTHON3=${ENABLEPY3}
 
 # build
 cmake --build python -- -j ${CPU_COUNT}
@@ -30,7 +29,7 @@ cmake --build python -- -j ${CPU_COUNT}
 cmake --build python --target install
 
 # test
-#ctest -V
+ctest --extra-verbose --output-on-failure
 
 # remove unnecessary testing files
 rm -rvf ${PREFIX}/libexec/nds2-client
