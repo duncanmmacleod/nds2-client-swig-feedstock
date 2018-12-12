@@ -11,6 +11,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.xz
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - macos-static-python.patch  # [osx and not py2k]
 
 build:
   number: 1001
