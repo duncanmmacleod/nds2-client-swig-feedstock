@@ -53,7 +53,6 @@ outputs:
     script: install-python.sh
     build:
       activate_in_script: True
-      skip: true  # [osx and py==37]
     requirements:
       build:
         - {{ compiler('c') }}
