@@ -2,6 +2,8 @@
 #
 # Build the common SWIG Interface libraries for the NDS2Client
 #
+# This script needs: ${c_compiler}, ${cxx_compiler}
+#
 
 mkdir -p build
 pushd build
