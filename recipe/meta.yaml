@@ -1,6 +1,6 @@
 {% set name = "nds2-client-swig" %}
-{% set version = "0.16.3" %}
-{% set sha256 = "08b666adaa0697baaa6f76bf96757fa580fbd02186826b37792691776b84c5c6" %}
+{% set version = "0.16.4" %}
+{% set sha256 = "cc578339dc638df4a11b42dd508d17200ea41a4f71430423ee16d4abb6aefdeb" %}
 {% set nds2_client_version = "0.16.2" %}
 
 package:
@@ -15,7 +15,7 @@ source:
     - macos-static-python.patch  # [osx]
 
 build:
-  number: 1001
+  number: 0
   skip: true  # [win]
 
 requirements:
