@@ -19,3 +19,7 @@ cmake ${SRC_DIR} \
   -DENABLE_SWIG_PYTHON3=no
 
 cmake --build . -- -j${CPU_COUNT}
+
+ctest --extra-verbose --output-on-failure
+
+cmake --build . --target install
