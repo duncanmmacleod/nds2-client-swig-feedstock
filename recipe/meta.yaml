@@ -1,6 +1,6 @@
 {% set name = "nds2-client-swig" %}
-{% set version = "0.16.3" %}
-{% set sha256 = "08b666adaa0697baaa6f76bf96757fa580fbd02186826b37792691776b84c5c6" %}
+{% set version = "0.16.4" %}
+{% set sha256 = "cc578339dc638df4a11b42dd508d17200ea41a4f71430423ee16d4abb6aefdeb" %}
 {% set nds2_client_version = "0.16.2" %}
 
 package:
@@ -15,7 +15,7 @@ source:
     - macos-static-python.patch  # [osx]
 
 build:
-  number: 1001
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -25,30 +25,17 @@ requirements:
     - cmake >=3.6
     - make  # [not win]
     - pkg-config  # [not win]
-    - swig >=3.0.7
   host:
+    - swig >=3.0.7
     - nds2-client >={{ nds2_client_version }}
+test:
+  commands:
+    - test -f ${PREFIX}/include/nds2-client/nds.i
+    - test -f ${PREFIX}/include/nds2-client/nds_swig.hh
 
 outputs:
   - name: nds2-client-swig
-    script: install-interface.sh
-    requirements:
-      build:
-        - cmake >=3.6
-        - make  # [not win]
-      host:
-        - nds2-client >={{ nds2_client_version }}
-    test:
-      commands:
-        - test -f ${PREFIX}/include/nds2-client/nds.i
-        - test -f ${PREFIX}/include/nds2-client/nds_swig.hh
-    about:
-      home: https://wiki.ligo.org/DASWG/NDSClient
-      license: GPLv3
-      license_family: GPL
-      license_file: '{{ environ["RECIPE_DIR"] }}/COPYING'
-      summary: SWIG bindings for NDS2
-      description: This provides SWIG interface files for the NDS2 client.
+
   - name: python-nds2-client
     script: install-python.sh
     build:
@@ -60,12 +47,12 @@ outputs:
         - cmake >=3.6
         - pkg-config  # [not win]
         - make  # [not win]
-        - swig >=3.0.7
       host:
         - nds2-client >={{ nds2_client_version }}
         - {{ pin_subpackage('nds2-client-swig', exact=True) }}
-        - python
         - numpy
+        - python
+        - swig >=3.0.7
       run:
         - nds2-client >={{ nds2_client_version }}
         - python
@@ -88,6 +75,7 @@ about:
   license_family: GPL
   license_file: '{{ environ["RECIPE_DIR"] }}/COPYING'
   summary: NDS2 Client interface SWIG wrappings
+  description: This provides SWIG interface files for the NDS2 client.
 
 extra:
   recipe-maintainers:
