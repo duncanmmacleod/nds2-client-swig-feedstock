@@ -11,7 +11,7 @@ Package license: GPLv3
 
 Feedstock license: BSD 3-Clause
 
-Summary: SWIG bindings for NDS2
+Summary: NDS2 Client interface SWIG wrappings
 
 This provides SWIG interface files for the NDS2 client.
 
