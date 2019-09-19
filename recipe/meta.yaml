@@ -1,6 +1,6 @@
 {% set name = "nds2-client-swig" %}
 {% set version = "0.16.5" %}
-{% set sha256 = "861c246a6959bdd9a704550a6fac749a1b7f0fe3f7a5d5e372bddcc36f6797fc" %}
+{% set sha256 = "fd7c6aebf201a02cd7caf111969a70d99aa3eecd0fe99b7163896293463402a4" %}
 {% set nds2_client_version = "0.16.2" %}
 
 package:
@@ -25,7 +25,7 @@ requirements:
     - make  # [not win]
     - pkg-config  # [not win]
   host:
-    - swig >=3.0.7
+    - swig >=3.0.7,<4
     - nds2-client >={{ nds2_client_version }}
 test:
   commands:
@@ -49,7 +49,7 @@ outputs:
         - {{ pin_subpackage('nds2-client-swig', exact=True) }}
         - numpy
         - python
-        - swig >=3.0.7
+        - swig >=3.0.7,<4
       run:
         - nds2-client >={{ nds2_client_version }}
         - python
