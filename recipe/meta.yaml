@@ -8,7 +8,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.xz
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
@@ -30,16 +29,14 @@ requirements:
     - nds2-client >={{ nds2_client_version }}
 test:
   commands:
-    - test -f ${PREFIX}/include/nds2-client/nds.i
-    - test -f ${PREFIX}/include/nds2-client/nds_swig.hh
+    - test -f ${PREFIX}/include/nds2-client/nds.i  # [unix]
+    - test -f ${PREFIX}/include/nds2-client/nds_swig.hh  # [unix]
 
 outputs:
   - name: nds2-client-swig
 
   - name: python-nds2-client
     script: install-python.sh
-    build:
-      activate_in_script: True
     requirements:
       build:
         - {{ compiler('c') }}
@@ -61,19 +58,19 @@ outputs:
       imports:
         - nds2
     about:
-      home: https://wiki.ligo.org/DASWG/NDSClient
+      home: https://wiki.ligo.org/Computing/NDSClient
       license: GPLv3
       license_family: GPL
-      license_file: '{{ environ["RECIPE_DIR"] }}/COPYING'
+      license_file: COPYING
       summary: Python extensions for NDS2
       description: |
         This provides python wrappers for the nds2 client.
 
 about:
-  home: https://wiki.ligo.org/DASWG/NDSClient
+  home: https://wiki.ligo.org/Computing/NDSClient
   license: GPLv3
   license_family: GPL
-  license_file: '{{ environ["RECIPE_DIR"] }}/COPYING'
+  license_file: COPYING
   summary: NDS2 Client interface SWIG wrappings
   description: This provides SWIG interface files for the NDS2 client.
 
