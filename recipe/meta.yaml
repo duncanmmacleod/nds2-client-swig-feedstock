@@ -1,6 +1,6 @@
 {% set name = "nds2-client-swig" %}
-{% set version = "0.16.5" %}
-{% set sha256 = "fd7c6aebf201a02cd7caf111969a70d99aa3eecd0fe99b7163896293463402a4" %}
+{% set version = "0.16.6" %}
+{% set sha256 = "0184eae7cf7eeb1d0a4bb0cf32d57b0a9c60e59912546bd3116e740b2af176b7" %}
 {% set nds2_client_version = "0.16.2" %}
 
 package:
